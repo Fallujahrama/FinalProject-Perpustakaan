@@ -5,7 +5,7 @@ public class Praktik3Perpustakaan{
         Scanner sc = new Scanner (System.in);
 
         String judulBuku;
-        int kodeBuku, lamaMeminjam, lamaPengembalian, denda;
+        int kodeBuku, lamaMeminjam, lamaPengembalian, keterlambatan;
 
         System.out.println("Masukkkan Judul Buku: ");
         judulBuku = sc.nextLine();
@@ -16,9 +16,9 @@ public class Praktik3Perpustakaan{
         System.out.println("Masukkan Lama Pengembalian: ");
         lamaPengembalian = sc.nextInt();
 
-        denda = lamaMeminjam - lamaPengembalian;
+        keterlambatan = lamaMeminjam - lamaPengembalian;
         
-        System.out.println("denda sebesar: " + denda);
+        System.out.println("denda sebesar: " + keterlambatan);
 
 
     }
