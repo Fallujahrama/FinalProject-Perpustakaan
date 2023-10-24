@@ -10,7 +10,7 @@ public class cobaLooping {
         int lamaMeminjam, lamaPengembalian;
         stock = 5;
         
-        
+
         do {
         System.out.println("=== SELAMAT DATANG DI PERPUSTAKAAN JTI ===");
         System.out.println("===       Pelayanan yang tersedia      ===");
@@ -70,6 +70,5 @@ public class cobaLooping {
             
         } while ( opsi != 3);
         System.out.println("Terimakasih telah mengakses Perpustakaan");
-        
     }
 }
