@@ -23,5 +23,6 @@ public class searching {
         if (!ketemu){
             System.out.println("Buku tidak ditemukan!");
         }
+        sc.close();
     }
 }
