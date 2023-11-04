@@ -23,12 +23,14 @@ public class pustakawan {
                     System.out.printf("Anda menambahkan buku berjudul %s sebanyak %s buku \n", judulBaru, stockBaru);
                     System.out.println("");
                     break;
-                
+                    
                 case 2:
                     System.out.print("Masukan nama : ");
                     String namaBaru = input.next();
                     System.out.print("Masukan NIM : ");
-                    int nimBaru = input.nextInt();
+                    long nimBaru = input.nextLong();
+                    System.out.printf("Anda menambahkan anggota bernama %s dengan NIM %s \n", namaBaru, nimBaru);
+                    System.out.println("");
                     break;
                 
                 case 3:
