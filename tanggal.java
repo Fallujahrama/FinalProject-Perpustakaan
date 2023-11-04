@@ -29,5 +29,6 @@ public class tanggal {
         } catch (ParseException e){
             System.out.println("Format tanggal tidak sesuai. Gunakan format dd-MM-yyyy");
         }
+        sc.close();
     }
 }
