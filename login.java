@@ -12,6 +12,7 @@ public class login {
         String loginMasuk, judulBuku, tanggalPeminjaman, tanggalPengembalian;
         Date tglPengembalian, tglPeminjaman;
         long selisihHari;
+        double denda = 0;
 
         do {
             System.out.println("||      Selamat Datang di Perpustakaan JTI               ||");
@@ -52,6 +53,8 @@ public class login {
                                 judulBuku = input.nextLine();
                                 System.out.print("||    Minjam berapa buku : ");
                                 int meminjam = input.nextInt();
+                                System.out.print("||    Masukan tanggal peminjaman (dd-MM-yyyy) : ");
+                                tanggalPeminjaman = input.next();                        
                                 System.out.printf("||    Mahasiswa %s dengan nim %s meminjam buku %s sejumlah %s \n", nama, nim, judulBuku, meminjam);
                                 System.out.println("");
                                 break;
@@ -72,7 +75,10 @@ public class login {
                                     selisihHari = (tglPengembalian.getTime() - tglPeminjaman.getTime()) / (24 * 60 * 60 * 1000);
 
                                     if (selisihHari > 7 ){
-                                        System.out.printf("||    Mahasiswa %s terlambat mengembalikan buku dan dikenakan denda", nama);
+                                        int hariTelat = (int) (selisihHari - 7);
+                                        denda = hariTelat * 500;
+                                        System.out.printf("||    Mahasiswa %s terlambat %s hari mengembalikan buku \n", nama, hariTelat);
+                                        System.out.printf("||    Dikenakan denda sebesar %s rupiah \n", denda);
                                         System.out.println("");
                                     } else {
                                         System.out.println("||    Terimakasih telah mengembalikan tepat waktu!");
@@ -86,7 +92,9 @@ public class login {
                             case 3:
                                 break;
                                 
-                                default:
+                            default:
+                                System.out.println("||    Anda salah memilih layanan!");
+                                System.out.println("");
                                 break;
                             }
                     } while (pilihMahasiswa != 3);
