@@ -5,6 +5,8 @@ public class searching {
         Scanner sc = new Scanner(System.in);
 
         String [] judulBuku = {"Sistem Informasi", "Sistem Intrumentasi dan Sistem Kontrol", "Sistem Informasi Manajemen", "Dasar Pemrograman", "Dasar Pemrograman Web"};
+        String [] laporan = new String[10];
+        int histori = 0;
         String key;
         boolean ketemu = false;
 
@@ -23,6 +25,28 @@ public class searching {
         if (!ketemu){
             System.out.println("Buku tidak ditemukan!");
         }
+
+        System.out.print("Masukan judul buku : ");
+        String judul = sc.next();
+        System.out.print("berapa banyak buku : ");
+        int banyakBuku = sc.nextInt();
+        String peminjaman = "Mahasiswa meminjam buku " + judul + " sebanyak " + banyakBuku;
+        laporan[histori] = peminjaman;
+        histori++;
+
+        System.out.print("Masukan judul buku : ");
+        judul = sc.next();
+        System.out.print("berapa banyak buku : ");
+        banyakBuku = sc.nextInt();
+        String pengembalian = "Mahasiswa mengembalikan buku " + judul + " sebanyak " + banyakBuku;
+        laporan[histori] = pengembalian;
+        histori++;
+
+        for (int i = 0 ; i < histori; i++){
+            System.out.println(laporan[i]);
+        }
+
+
         sc.close();
     }
 }
