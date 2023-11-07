@@ -8,6 +8,9 @@ public class login {
         Scanner input = new Scanner(System.in);
         SimpleDateFormat tanggalFormat = new SimpleDateFormat("dd-MM-yyyy");
 
+        String [] laporan = new String[100];
+        int histori = 0;
+
         int entry, pilihMahasiswa, layananPustakawan;
         String loginMasuk, judulBuku, tanggalPeminjaman, tanggalPengembalian;
         Date tglPengembalian, tglPeminjaman;
@@ -41,7 +44,8 @@ public class login {
                         System.out.println("||      Pelayanan yang tersedia                          ||");
                         System.out.println("||      1. Peminjaman Buku                               ||");
                         System.out.println("||      2. Pengembalian Buku                             ||");
-                        System.out.println("||      3. Log Out                                       ||");
+                        System.out.println("||      3. Histori Laporan                               ||");
+                        System.out.println("||      4. Log Out                                       ||");
                         System.out.print("||      Silahkan pilih layanan diatas : ");
                         pilihMahasiswa = input.nextInt();
                         
@@ -54,7 +58,10 @@ public class login {
                                 System.out.print("||    Minjam berapa buku : ");
                                 int meminjam = input.nextInt();
                                 System.out.print("||    Masukan tanggal peminjaman (dd-MM-yyyy) : ");
-                                tanggalPeminjaman = input.next();                        
+                                tanggalPeminjaman = input.next();      
+                                String peminjam = "||    Mahasiswa " + nama + " dengan nim " + nim + " meminjam buku " + judulBuku + " sejumlah " + meminjam;
+                                laporan[histori] = peminjam;
+                                histori++;                  
                                 System.out.printf("||    Mahasiswa %s dengan nim %s meminjam buku %s sejumlah %s \n", nama, nim, judulBuku, meminjam);
                                 System.out.println("");
                                 break;
@@ -76,28 +83,44 @@ public class login {
 
                                     if (selisihHari > 7 ){
                                         int hariTelat = (int) (selisihHari - 7);
-                                        denda = hariTelat * 500;
-                                        System.out.printf("||    Mahasiswa %s terlambat %s hari mengembalikan buku \n", nama, hariTelat);
+                                        denda = hariTelat * 500;                                    
+                                        System.out.printf("||    Mahasiswa %s terlambat %s hari mengembalikan buku %s \n", nama, hariTelat, judulBuku);
                                         System.out.printf("||    Dikenakan denda sebesar %s rupiah \n", denda);
                                         System.out.println("");
+                                        String pengembali = "||    Mahasiswa " + nama + " dengan nim " + nim + " mengembalikan buku " + judulBuku + " terlambat " + hariTelat + " hari";
+                                        laporan[histori] = pengembali;
+                                        histori++;
                                     } else {
                                         System.out.println("||    Terimakasih telah mengembalikan tepat waktu!");
                                         System.out.println("");
+                                        String pengembali = "||    Mahasiswa " + nama + " dengan nim " + nim + " mengembalikan buku " + judulBuku + " tepat waktu";
+                                        laporan[histori] = pengembali;
+                                        histori++;
                                     }
 
                                 } catch (ParseException e){
                                     System.out.println("Format tanggal tidak sesuai. Gunakan format dd-MM-yyyy");
                                 }
+                                break;
                             
                             case 3:
-                                break;
+                                System.out.println("===========================================================");
+                                System.out.print("||    Histori Laporan : \n");
+                                for (int i = 0; i < histori; i++){
+                                    System.out.println(laporan[i]); 
+                                }
+                                System.out.println("");
                                 
+                                
+                            case 4:
+                                break;
+
                             default:
                                 System.out.println("||    Anda salah memilih layanan!");
                                 System.out.println("");
                                 break;
                             }
-                    } while (pilihMahasiswa != 3);
+                    } while (pilihMahasiswa != 4);
                 }
                 else if (loginMasuk.equalsIgnoreCase("Pustakawan")){
                     do {
