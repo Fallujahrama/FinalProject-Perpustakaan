@@ -1,24 +1,24 @@
 import java.util.Scanner;
 public class ProjekJosheet05{
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         String judulBuku;
         int stock, sisaStock, lamaMeminjam, lamaPengembalian, totalPeminjaman, option1;
 
         System.out.println("=== SELAMAT DATANG DI PERPUSTAKAAN JTI ===");
         System.out.println("Masukkan option");
-        option1 = input.nextInt();
+        option1 = sc.nextInt();
         
         if (option1 == 1) {
-            judulBuku = input.nextLine();
+            judulBuku = sc.nextLine();
 
             System.out.println("Masukan Judul Buku yang ingin di dipinjam : ");
-            judulBuku = input.nextLine();
+            judulBuku = sc.nextLine();
             System.out.println("Stock yang tersedia : ");
-            stock = input.nextInt();
+            stock = sc.nextInt();
             System.out.print("Minjam berapa buku : ");
-            totalPeminjaman = input.nextInt();
+            totalPeminjaman = sc.nextInt();
 
             sisaStock = stock - totalPeminjaman;
             System.out.println("Sisa stock ada : " + sisaStock);
@@ -26,14 +26,14 @@ public class ProjekJosheet05{
             System.out.println(String.format("Anda meminjam buku %s sebanyak %s buah", judulBuku, totalPeminjaman));
             
         } else if (option1 == 2){
-            judulBuku = input.nextLine();
+            judulBuku = sc.nextLine();
 
             System.out.println("Masukan judulbuku ");
-            judulBuku = input.nextLine();
+            judulBuku = sc.nextLine();
             System.out.println("Masukan lamameminjam ");
-            lamaMeminjam = input.nextInt();
+            lamaMeminjam = sc.nextInt();
             System.out.println("Masukan lamapengembalian ");
-            lamaPengembalian = input.nextInt();
+            lamaPengembalian = sc.nextInt();
 
             if (lamaPengembalian>lamaMeminjam){
                 System.out.println("Anda terlambat mengembalikan!");
