@@ -13,45 +13,45 @@ public class searching {
         System.out.print("Ingin mencari buku apa? ");
         key = sc.next().toLowerCase();
 
-        String[] judulBuku = new String[15];
-        int[] kodeBuku = new int [15];
-        int[] stockBuku = new int [15];
+        String[] judulBuku = new String[10];
+        int[] kodeBuku = new int [10];
+        int[] stockBuku = new int [10];
 
         judulBuku[0] = "Sistem Informasi Jaringan";
         judulBuku[1] = "Visual Code";
         judulBuku[2] = "Information Technology";
         judulBuku[3] = "Java Program";
         judulBuku[4] = "Dasar Pemrograman Web";
-        judulBuku[5] = "Introduction to Algoritma";
-        judulBuku[6] = "Python Crash Course";
-        judulBuku[7] = "HTML dan CSS";
-        judulBuku[8] = "Java dan JavaScript";
-        judulBuku[9] = "Modern PHP";
-        judulBuku[10] ="Eloquent Ruby";
+       // judulBuku[5] = "Introduction to Algoritma";
+        //judulBuku[6] = "Python Crash Course";
+        //judulBuku[7] = "HTML dan CSS";
+       // judulBuku[8] = "Java dan JavaScript";
+       // judulBuku[9] = "Modern PHP";
+       // judulBuku[10] ="Eloquent Ruby";
 
         kodeBuku[0] = 12000;
         kodeBuku[1] = 12001;
         kodeBuku[2] = 12003;
         kodeBuku[3] = 12005;
         kodeBuku[4] = 12007;
-        kodeBuku[5] = 12009;
-        kodeBuku[6] = 13000;
-        kodeBuku[7] = 13001;
-        kodeBuku[8] = 13003;
-        kodeBuku[9] = 13005;
-        kodeBuku[10] = 13007;
+       // kodeBuku[5] = 12009;
+       // kodeBuku[6] = 13000;
+       // kodeBuku[7] = 13001;
+       // kodeBuku[8] = 13003;
+       // kodeBuku[9] = 13005;
+       // kodeBuku[10] = 13007;
 
         stockBuku[0] = 3;
         stockBuku[1] = 4;
         stockBuku[2] = 3;
         stockBuku[3] = 3;
         stockBuku[4] = 3;
-        stockBuku[5] = 2;
-        stockBuku[6] = 4;
-        stockBuku[7] = 4;
-        stockBuku[8] = 2;
-        stockBuku[9] = 5;
-        stockBuku[10] = 5;
+       // stockBuku[5] = 2;
+       // stockBuku[6] = 4;
+        //stockBuku[7] = 4;
+        //stockBuku[8] = 2;
+        //stockBuku[9] = 5;
+        //stockBuku[10] = 5;
 
 
               System.out.println("                    Judul Buku Yang Tersedia               ");
