@@ -21,7 +21,7 @@ public class searching {
         judulBuku[1] = "Visual Code";
         judulBuku[2] = "Information Technology";
         judulBuku[3] = "Java Program";
-        judulBuku[4] = "Kosenp Sistem Informasi";
+        judulBuku[4] = "Dasar Pemrograman Web";
         judulBuku[5] = "Introduction to Algoritma";
         judulBuku[6] = "Python Crash Course";
         judulBuku[7] = "HTML dan CSS";
