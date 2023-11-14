@@ -1,28 +1,54 @@
 import java.util.Scanner;
+public class ProjekJosheet05{
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
 
-public class ProjekJosheet05 {
+        String judulBuku;
+        int stock, sisaStock, lamaMeminjam, lamaPengembalian, totalPeminjaman, option1;
+
+        System.out.println("=== SELAMAT DATANG DI PERPUSTAKAAN JTI ===");
+        System.out.println("Masukkan option");
+        option1 = input.nextInt();
+        
+        if (option1 == 1) {
+            judulBuku = input.nextLine();
+
+            System.out.println("Masukan Judul Buku yang ingin di dipinjam : ");
+            judulBuku = input.nextLine();
+            System.out.println("Stock yang tersedia : ");
+            stock = input.nextInt();
+            System.out.print("Minjam berapa buku : ");
+            totalPeminjaman = input.nextInt();
+
+            sisaStock = stock - totalPeminjaman;
+            System.out.println("Sisa stock ada : " + sisaStock);
+
+            System.out.println(String.format("Anda meminjam buku %s sebanyak %s buah", judulBuku, totalPeminjaman));
+            
+        } else if (option1 == 2){
+            judulBuku = input.nextLine();
+
+            System.out.println("Masukan judulbuku ");
+            judulBuku = input.nextLine();
+            System.out.println("Masukan lamameminjam ");
+            lamaMeminjam = input.nextInt();
+            System.out.println("Masukan lamapengembalian ");
+            lamaPengembalian = input.nextInt();
+
+            if (lamaPengembalian>lamaMeminjam){
+                System.out.println("Anda terlambat mengembalikan!");
+            }
+            else {
+                System.out.println("Terimakasih telah melakukan Peminjaman");
+            }
     
-    public static void main(String[] args){
-
-        Scanner sc = new Scanner(System.in);
-        String judulbuku;
-        int lamameminjam, lamapengembalian;
-
-        System.out.println(" Masukan judulbuku ");
-        judulbuku = sc.nextLine();
-        System.out.println(" Masukan lamameminjam ");
-        lamameminjam = sc.nextInt();
-        System.out.println(" Masukan lamapengembalian ");
-        lamapengembalian = sc.nextInt();
-
-        if (lamapengembalian>lamameminjam){
-            System.out.println("Anda terlambat mengembalikan seta dikenakan denda!");
         }
         else {
-            System.out.println("Terimakasih sudah mengembalikan tepat waktu");
+            System.out.println("Option yang dipilih salah");
+            
         }
 
+
     }
+    
 }
-
-
