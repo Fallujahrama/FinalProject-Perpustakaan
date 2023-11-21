@@ -1,7 +1,5 @@
 import java.util.Scanner;
-
 public class cobaLooping {
-
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -10,7 +8,6 @@ public class cobaLooping {
         int lamaMeminjam, lamaPengembalian;
         stock = 5;
         
-
         do {
         System.out.println("=== SELAMAT DATANG DI PERPUSTAKAAN JTI ===");
         System.out.println("===       Pelayanan yang tersedia      ===");
@@ -20,12 +17,10 @@ public class cobaLooping {
         System.out.print("Silahkan pilih layanan diatas : ");
         opsi = input.nextInt();
         
-        
             if (opsi == 1){
 
                 judulBuku = input.nextLine();
             
-
                 System.out.print("Masukan Judul Buku yang ingin di dipinjam : ");
                 judulBuku = input.nextLine();
                 System.out.println("Stock yang tersedia : " + stock);
@@ -41,7 +36,6 @@ public class cobaLooping {
             else if (opsi == 2) {
 
                 judulBuku = input.nextLine();
-
                 System.out.print("Masukkkan Judul Buku: ");
                 judulBuku = input.nextLine();
                 System.out.print("Masukkan Lama Meminjam: ");

@@ -1,13 +1,10 @@
 import java.util.Scanner;
-
 public class ProjectPerpustakaanJobsheet6 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-    
         String judulBuku;
         int stock, sisaStock, lamaMeminjam, lamaPengembalian, totalPeminjaman, option1;
-
 
         System.out.println("=== SELAMAT DATANG DI PERPUSTAKAAN JTI ===");
         System.out.println("Masukkan option");
@@ -44,14 +41,9 @@ public class ProjectPerpustakaanJobsheet6 {
             else {
                 System.out.println("Terimakasih telah melakukan Peminjaman");
             }
-    
         }
         else {
-            System.out.println("Option yang dipilih salah");
-            
+            System.out.println("Option yang dipilih salah");   
         }
-
-
     }
-    
 }

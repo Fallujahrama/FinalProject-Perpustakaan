@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class searching {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -37,7 +36,7 @@ public class searching {
             System.out.println(" ");
             System.out.println(
                      "---------------------------------------------------------------------------------------------------------");
-            System.out.printf("| %-30s| %-15s| %-15s| %n"
+            System.out.printf("| %-25s| %-10s| %-10s| %n"
             , "Judul Buku", "Kode Buku", "Stock Buku");
             System.out.println();
                     System.out.println(
@@ -45,7 +44,7 @@ public class searching {
 
         for (int j = 0; j < histori; j++){
             if (judulBukuStrings[j].toLowerCase().contains(key)){
-                System.out.printf("| %-30s| %-15s| %-15s| %n", judulBukuStrings[j], kodeBuku[j], stockBuku[j]);
+                System.out.printf("| %-25s| %-10s| %-10s| %n", judulBukuStrings[j], kodeBuku[j], stockBuku[j]);
                 ketemu = true;
             }
         }
