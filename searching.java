@@ -4,24 +4,21 @@ public class searching {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String [] judulBuku = {"Sistem Informasi", "Sistem Intrumentasi dan Sistem Kontrol", "Sistem Informasi Manajemen", "Dasar Pemrograman", "Dasar Pemrograman Web"};
+        //String [] judulBuku = {"Sistem Informasi", "Sistem Intrumentasi dan Sistem Kontrol", "Sistem Informasi Manajemen", "Dasar Pemrograman", "Dasar Pemrograman Web"};
         // String [] laporan = new String[10];
-        // int histori = 0;
+        int histori = 5;
         String key;
         boolean ketemu = false;
 
-        System.out.print("Ingin mencari buku apa? ");
-        key = sc.next().toLowerCase();
-
-        String[] judulBuku = new String[10];
+        String[] judulBukuStrings = new String[10];
         int[] kodeBuku = new int [10];
         int[] stockBuku = new int [10];
 
-        judulBuku[0] = "Sistem Informasi Jaringan";
-        judulBuku[1] = "Visual Code";
-        judulBuku[2] = "Information Technology";
-        judulBuku[3] = "Java Program";
-        judulBuku[4] = "Dasar Pemrograman Web";
+        judulBukuStrings[0] = "Sistem Informasi Jaringan";
+        judulBukuStrings[1] = "Visual Code";
+        judulBukuStrings[2] = "Information Technology";
+        judulBukuStrings[3] = "Java Program";
+        judulBukuStrings[4] = "Dasar Pemrograman Web";
        // judulBuku[5] = "Introduction to Algoritma";
         //judulBuku[6] = "Python Crash Course";
         //judulBuku[7] = "HTML dan CSS";
@@ -53,24 +50,32 @@ public class searching {
         //stockBuku[9] = 5;
         //stockBuku[10] = 5;
 
+        System.out.print("Ingin mencari buku apa? ");
+        key = sc.next().toLowerCase();
 
-              System.out.println("                    Judul Buku Yang Tersedia               ");
-              System.out.println(" ");              
-              System.out.println(
-                                   "----------------------------------------------------------------");
-              System.out.printf("%");
+         // menampilkan Searching buku
+        System.out.println("====================================        Buku Yang Tersedia       ====================================");
+            System.out.println(" ");
+            System.out.println(
+                     "---------------------------------------------------------------------------------------------------------");
+            System.out.printf("| %-30s| %-15s| %-15s| %n"
+            , "Judul Buku", "Kode Buku", "Stock Buku");
+            System.out.println();
+                    System.out.println(
+                     "---------------------------------------------------------------------------------------------------------");
 
-               System.out.println(
-                                   "----------------------------------------------------------------");
+            //System.out.println("                    Judul Buku Yang Tersedia               ");
+            //  System.out.println(" ");              
+            //  System.out.println(
+            //                       "----------------------------------------------------------------");
+            //  System.out.printf("%");
 
+            //   System.out.println(
+            //                       "----------------------------------------------------------------");
 
-
-                    
-            
-
-        for (int j = 0; j < judulBuku.length; j++){
-            if (judulBuku[j].toLowerCase().contains(key)){
-                System.out.println(judulBuku[j]);
+        for (int j = 0; j < histori; j++){
+            if (judulBukuStrings[j].toLowerCase().contains(key)){
+                System.out.printf("| %-30s| %-15s| %-15s| %n", judulBukuStrings[j], kodeBuku[j], stockBuku[j]);
                 ketemu = true;
             }
         }
