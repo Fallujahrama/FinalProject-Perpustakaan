@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class cobaLooping {
 
     public static void main(String[] args) {
