@@ -15,7 +15,7 @@ public class StockPerpustakaan {
         judulBuku = input.nextLine();
         System.out.println("Stock yang tersedia : ");
         stock = input.nextInt();
-        System.out.print("Minjam berapa buku : ");
+        System.out.print("Berapa jumlah buku yang dipinjam : ");
         totalPeminjaman = input.nextInt();
 
         sisaStock = stock - totalPeminjaman;
