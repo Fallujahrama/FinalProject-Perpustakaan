@@ -27,7 +27,6 @@ public class ProjekJosheet05{
             
         } else if (option1 == 2){
             judulBuku = sc.nextLine();
-
             System.out.println("Masukan judulbuku ");
             judulBuku = sc.nextLine();
             System.out.println("Masukan lamameminjam ");
