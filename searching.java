@@ -7,9 +7,9 @@ public class searching {
         String key;
         boolean ketemu = false;
 
-        String[] judulBukuStrings = new String[10];
-        int[] kodeBuku = new int [10];
-        int[] stockBuku = new int [10];
+        String[] judulBukuStrings = new String[5];
+        int[] kodeBuku = new int [5];
+        int[] stockBuku = new int [5];
 
         judulBukuStrings[0] = "Sistem Informasi Jaringan";
         judulBukuStrings[1] = "Visual Code";
@@ -30,7 +30,7 @@ public class searching {
         stockBuku[4] = 3;
       
         System.out.print("Ingin mencari buku apa? ");
-        key = sc.next().toLowerCase();
+        key = sc.nextLine().toLowerCase();
 
         System.out.println("====================================        Buku Yang Tersedia       ====================================");
             System.out.println(" ");
@@ -42,7 +42,7 @@ public class searching {
                     System.out.println(
                      "---------------------------------------------------------------------------------------------------------");
 
-        for (int j = 0; j < histori; j++){
+        for (int j = 0; j < judulBukuStrings.length; j++){
             if (judulBukuStrings[j].toLowerCase().contains(key)){
                 System.out.printf("| %-25s| %-10s| %-10s| %n", judulBukuStrings[j], kodeBuku[j], stockBuku[j]);
                 ketemu = true;
