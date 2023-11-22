@@ -34,7 +34,7 @@ public class ArrayPeminjaman {
     stockBuku[3] = 3;
     stockBuku[4] = 3;
 
-    for (int j = 0; j < histori; j++){
+    for (int j = 0; j < kodeBuku.length; j++){
         if (kodeBuku[j] == key){
             System.out.printf("| %-30s| %-15s| %-15s| %n", judulBukuStrings[j], kodeBuku[j], stockBuku[j]);
             tersedia = true;
