@@ -5,14 +5,14 @@ public class StockPerpustakaan {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
 
-        String judulBuku;
+        String judulBuku1;
         int stock, sisaStock;
         int totalPeminjaman;
         
 
         System.out.println("=== SELAMAT DATANG DI PERPUSTAKAAN JTI ===");
         System.out.println("Masukan Judul Buku yang ingin di dipinjam : ");
-        judulBuku = input.nextLine();
+        judulBuku1 = input.nextLine();
         System.out.println("Stock yang tersedia : ");
         stock = input.nextInt();
         System.out.print("Minjam berapa buku : ");
@@ -21,7 +21,7 @@ public class StockPerpustakaan {
         sisaStock = stock - totalPeminjaman;
         System.out.println("Sisa stock ada : " + sisaStock);
 
-        System.out.println(String.format("Anda meminjam buku %s sebanyak %s buah", judulBuku, totalPeminjaman));
+        System.out.println(String.format("Anda meminjam buku %s sebanyak %s buah", judulBuku1, totalPeminjaman));
 
         
     }
