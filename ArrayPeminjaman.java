@@ -3,12 +3,14 @@ public class ArrayPeminjaman {
     public static void main(String[] args) {
         
     Scanner sc = new Scanner(System.in);
+
+    int key;
     int histori = 5;
-    String key, jumlahBuku;
+    String jumlahBuku;
     boolean tersedia = false;
 
     System.out.print("Masukkan kode buku : ");
-    key = sc.next().toLowerCase();
+    key = sc.nextInt();
 
     String[] judulBukuStrings = new String[10];
     int[] kodeBuku = new int [10];
@@ -32,8 +34,8 @@ public class ArrayPeminjaman {
     stockBuku[3] = 3;
     stockBuku[4] = 3;
 
-    for (int j = 0; j < histori; j++){
-        if (String.valueOf(kodeBuku[j]).contains(key)){
+    for (int j = 0; j < kodeBuku.length; j++){
+        if (kodeBuku[j] == key){
             System.out.printf("| %-30s| %-15s| %-15s| %n", judulBukuStrings[j], kodeBuku[j], stockBuku[j]);
             tersedia = true;
 
