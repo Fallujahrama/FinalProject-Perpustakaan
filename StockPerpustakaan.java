@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class StockPerpustakaan {
 
     public static void main(String[] args){
@@ -9,13 +8,13 @@ public class StockPerpustakaan {
         int stock, sisaStock;
         int totalPeminjaman;
         
-
+        
         System.out.println("=== SELAMAT DATANG DI PERPUSTAKAAN JTI ===");
         System.out.println("Masukan Judul Buku yang ingin di dipinjam : ");
         judulBuku1 = input.nextLine();
         System.out.println("Stock yang tersedia : ");
         stock = input.nextInt();
-        System.out.print("Minjam berapa buku : ");
+        System.out.print("Berapa jumlah buku yang dipinjam : ");
         totalPeminjaman = input.nextInt();
 
         sisaStock = stock - totalPeminjaman;
