@@ -51,24 +51,17 @@ public class login {
         int histori = 0;
         boolean isKetemu = false;
         boolean isLogin = false;
+        boolean isAdmin = false;
 
-        int entry, pilihMahasiswa, layananPustakawan, kode;
+        int pilihMahasiswa, layananPustakawan, kode;
         String loginUser, loginPass, tanggalPeminjaman, tanggalPengembalian;
         Date tglPengembalian, tglPeminjaman;
         long selisihHari;
         double denda = 0;
 
-        // System.out.println("||      Selamat Datang di Perpustakaan JTI               ||");
-        // System.out.println("||      1. Login                                         ||");
-        // System.out.println("||      2. Exit                                          ||");
-        // System.out.print("||      ");
-        // entry = input.nextInt();
-        
-        // if (entry == 1){
-            do {
-                // input.nextLine();
-                System.out.println("===========================================================");                
-                System.out.println("||      Silahkan Login                                   ||");
+            do {                
+                System.out.println("===============================================================");
+                System.out.println("||      Silahkan Login                                       ||");
                 System.out.print("||      Username = ");
                 loginUser = input.nextLine();                
                 System.out.print("||      Password = ");
@@ -77,6 +70,10 @@ public class login {
                 for (int i = 0; i < anggota.length; i++) {
                     if (loginUser.equalsIgnoreCase(anggota[i]) && loginPass.equals(password[i])){
                         isLogin = true;
+
+                        if (i == 0) {
+                            isAdmin = true;
+                        }
                         break;
                     }
                 }
@@ -84,38 +81,35 @@ public class login {
                     System.out.println("Username atau Password yang dimasukan salah, login kembali!");                    
                 }
             
-                if (isLogin == true && !loginUser.equalsIgnoreCase(anggota[0]) && !loginPass.equals(password[0])){
-                    System.out.println("===========================================================");                                        
-                    System.out.println("||      Selamat Datang di Perpustakaan JTI               ||");
+                if (isLogin && !isAdmin){
+                    System.out.println("===============================================================");
+                        System.out.println("||      Selamat Datang di Perpustakaan JTI                   ||");
                     do {
-                        System.out.println("||      Pelayanan yang tersedia                          ||");
-                        System.out.println("||      1. Peminjaman Buku                               ||");
-                        System.out.println("||      2. Pengembalian Buku                             ||");
-                        System.out.println("||      3. Histori Laporan                               ||");
-                        System.out.println("||      4. Log Out                                       ||");
+                        System.out.println("||      Pelayanan yang tersedia                              ||");
+                        System.out.println("||      1. Peminjaman Buku                                   ||");
+                        System.out.println("||      2. Pengembalian Buku                                 ||");
+                        System.out.println("||      3. Histori Laporan                                   ||");
+                        System.out.println("||      4. Log Out                                           ||");
                         System.out.print("||      Silahkan pilih layanan diatas : ");
                         pilihMahasiswa = input.nextInt();
                         
                         switch (pilihMahasiswa) {
                             case 1:
                             input.nextLine();
-                                System.out.println("===========================================================");
+                                System.out.println("===============================================================");
                                 System.out.print("Ingin mencari buku apa? ");
                                 String key = input.next().toLowerCase();
                         
-                                System.out.println("====================================        Buku Yang Tersedia       ====================================");
-                                    System.out.println(" ");
-                                    System.out.println(
-                                             "---------------------------------------------------------------------------------------------------------");
-                                    System.out.printf("| %-30s| %-15s| %-15s| %n"
-                                    , "Judul Buku", "Kode Buku", "Stock Buku");
-                                    System.out.println();
-                                            System.out.println(
-                                             "---------------------------------------------------------------------------------------------------------");
+                                System.out.println("==================     Buku Yang Tersedia    ==================");
+                                System.out.println(" ");
+                                System.out.println("---------------------------------------------------------------");
+                                System.out.printf("| %-30s| %-12s| %-12s| %n", "Judul Buku", "Kode Buku", "Stock Buku");
+                                System.out.println();
+                                System.out.println("---------------------------------------------------------------");
                         
                                 for (int j = 0; j < sementaraBuku; j++){
                                     if (judulBuku[j].toLowerCase().contains(key)){
-                                        System.out.printf("| %-30s| %-15s| %-15s| %n", judulBuku[j], kodeBuku[j], stockBuku[j]);
+                                        System.out.printf("| %-30s| %-13s| %-13s| %n", judulBuku[j], kodeBuku[j], stockBuku[j]);
                                         isKetemu = true;
                                     }
                                 }
@@ -135,10 +129,10 @@ public class login {
                                         stockBuku[i] -= meminjam;
                                         System.out.print("||    Masukan tanggal peminjaman (dd-MM-yyyy) : ");
                                         tanggalPeminjaman = input.next();      
-                                        String peminjam = "||    Mahasiswa " + loginUser + " dengan nim " + loginPass + " meminjam buku " + judulBuku[i] + " sejumlah " + meminjam;
+                                        String peminjam = "||    " + loginUser + " nim " + loginPass + " meminjam buku " + judulBuku[i] + " sejumlah " + meminjam;
                                         laporan[histori] = peminjam;
                                         histori++;                  
-                                        System.out.printf("||    Mahasiswa %s dengan nim %s meminjam buku %s sejumlah %s \n", loginUser, loginPass , judulBuku[i], meminjam);
+                                        System.out.printf("||    %s nim %s meminjam buku %s sejumlah %s \n", loginUser, loginPass , judulBuku[i], meminjam);
                                         System.out.println("");
                                     }
                                 }
@@ -150,7 +144,7 @@ public class login {
                             case 2:
                             input.nextLine();
                                 hasil = -1;
-                                System.out.println("===========================================================");
+                                System.out.println("===============================================================");
                                 System.out.print("||    Masukan kode buku yang di pinjam : ");
                                 kode = input.nextInt();
                                 for (int i = 0; i < kodeBuku.length; i++) {
@@ -191,7 +185,7 @@ public class login {
                                 break;
                             
                             case 3:
-                                System.out.println("===========================================================");
+                                System.out.println("===============================================================");
                                 System.out.print("||    Histori Laporan : \n");
                                 for (int i = 0; i < histori; i++){
                                     System.out.println(laporan[i]); 
@@ -212,54 +206,111 @@ public class login {
                 }
                 else if (loginUser.equalsIgnoreCase(anggota[0]) && loginPass.equals(password[0])){
                     do {
-                        System.out.println("===========================================================");
-                        System.out.println("||      Layanan untuk Pustakawan                         ||");
-                        System.out.println("||      1. Menambah data buku                            ||");
-                        System.out.println("||      2. Menambah data anggota                         ||");
-                        System.out.println("||      3. Log Out                                       ||");
+                        System.out.println("===============================================================");
+                        System.out.println("||      Layanan untuk Pustakawan                             ||");
+                        System.out.println("||      1. Menambah data buku                                ||");
+                        System.out.println("||      2. Menambah data anggota                             ||");
+                        System.out.println("||      3. Memperbarui stock buku                            ||");
+                        System.out.println("||      4. List Buku                                         ||");
+                        System.out.println("||      5. List Anggota                                      ||");
+                        System.out.println("||      6. Log Out                                           ||");
+                        System.out.println("||      7. Exit                                              ||");
                         System.out.print("||      Silahkan pilih layanan diatas : ");
                         layananPustakawan = input.nextInt();
             
                         switch (layananPustakawan) {
                             case 1:
-                                System.out.println("===========================================================");
+                                System.out.println("===============================================================");
                                 System.out.print("||    Masukan judul buku : ");
                                 String judulBaru = input.next();
-                                System.out.print("||    Berapa banyak buku : ");                                
+                                judulBuku[judulSementara] = judulBaru;
+                                judulSementara++;
+                                System.out.print("||    Masukan kode buku : ");
+                                int kodeBaru = input.nextInt();
+                                kodeBuku[kodeSementara] = kodeBaru;
+                                kodeSementara++;
+                                System.out.print("||    Berapa banyak buku : ");
                                 int stockBaru = input.nextInt();
+                                stockBuku[stockSementara] = stockBaru;
+                                stockSementara++;
                                 System.out.printf("|| Anda menambahkan buku berjudul %s sebanyak %s buku \n", judulBaru, stockBaru);
                                 System.out.println("");
                                 break;
                                 
                             case 2:
-                                System.out.println("===========================================================");
+                                System.out.println("===============================================================");
                                 System.out.print("||    Masukan nama : ");                                
                                 String namaBaru = input.next();
+                                anggota[anggotaSementara] = namaBaru;
+                                anggotaSementara++;
                                 System.out.print("||    Masukan NIM : ");                                
-                                long nimBaru = input.nextLong();
+                                String nimBaru = input.nextLine();
+                                password[nimSementara] = nimBaru;
+                                nimSementara++;
                                 System.out.printf("|| Anda menambahkan anggota bernama %s dengan NIM %s \n", namaBaru, nimBaru);
                                 System.out.println("");
                                 break;
                             
-                            case 3:
+                                case 3:
+                                System.out.println("===============================================================");
+                                for (int j = 0; j < sementaraBuku; j++) {
+                                    System.out.printf("%-30s|%-15s|%-15s|%n", judulBuku[j], kodeBuku[j], stockBuku[j]);
+                                }
+                                int key, hasil = -1;
+                                System.out.print("||    Masukan kode buku : ");
+                                key = input.nextInt();
+                                for (int i = 0; i < kodeBuku.length; i++) {
+                                    if (kodeBuku[i] == key){
+                                        hasil = i;
+                                        System.out.print("||    Masukan stock baru : ");
+                                        stockBuku[i] = input.nextInt();
+                                        System.out.printf("|| Anda memperbarui stock pada kode buku %s sebanyak %s \n", key, stockBuku[i]);
+                                    }
+                                }
+                                if (hasil == -1){
+                                    System.out.println("|| Buku tidak ditemukan!");
+                                }
+                                System.out.println("");
+                                break;
+                                
+                            case 4:                                
+                                System.out.println("===============================================================");
+                                System.out.println("-------------------------- List Buku --------------------------");
+                                System.out.printf("%-30s|%-15s|%-15s|%n", "Judul Buku", "Kode Buku", "Stock Buku");
+                                System.out.println("---------------------------------------------------------------");
+                                for (int j = 0; j < sementaraBuku; j++) {
+                                    System.out.printf("%-30s|%-15s|%-15s|%n", judulBuku[j], kodeBuku[j], stockBuku[j]);
+                                }
+                                System.out.println();
+                                break;
+                                
+                            case 5:
+                                System.out.println("===============================================================");
+                                System.out.println("-------------------- Username dan Password --------------------");
+                                System.out.printf("%-30s| %-30s|%n", "Username", "Password");
+                                System.out.println("---------------------------------------------------------------");
+                                for (int i = 0; i < sementaraAnggota; i++) {
+                                    System.out.printf("%-30s| %-30s|%n", anggota[i], password[i]);
+                                }
+                                System.out.println();
+                                break;
+
+                            case 6:
                                 isLogin = false;
                                 input.nextLine();
                                 break;
+
+                            case 7:
+                                return;
                         
                             default:
                                 System.out.println("|| Anda salah memilih layanan!");
                                 System.out.println("");
                                 break;
                         }
-                    } while (layananPustakawan != 3);
+                    } while (layananPustakawan != 6);
                 }
-            } while (isLogin == false);
-            // } 
-            // else if (entry == 2){
-            //     isLogin = false;
-            // }
-        
-        
+            } while (isLogin == false);        
         input.close();
     }
 }
