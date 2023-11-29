@@ -44,8 +44,8 @@ public class login {
         password [3] = "234172";
         password [4] = "234173";
 
-        int sementaraBuku = 5, sementaraAnggota = 4;
-        int judulSementara = 5, stockSementara = 5, kodeSementara = 5, anggotaSementara = 4, nimSementara = 4;
+        int sementaraBuku = 5, sementaraAnggota = 5;
+        int judulSementara = 5, stockSementara = 5, kodeSementara = 5, anggotaSementara = 5, nimSementara = 5;
 
         String [] laporan = new String[100];
         int histori = 0;
@@ -98,7 +98,7 @@ public class login {
                             input.nextLine();
                                 System.out.println("===============================================================");
                                 System.out.print("Ingin mencari buku apa? ");
-                                String key = input.next().toLowerCase();
+                                String key = input.nextLine().toLowerCase();
                         
                                 System.out.println("==================     Buku Yang Tersedia    ==================");
                                 System.out.println(" ");
@@ -241,6 +241,7 @@ public class login {
                                         stockSementara++;
                                         System.out.printf("|| Anda menambahkan buku berjudul %s sebanyak %s buku \n", judulBaru, stockBaru);
                                         System.out.println("");
+                                        sementaraBuku++;
                                         break;
 
                                     case 2:
