@@ -44,7 +44,8 @@ public class login {
         password [3] = "234172";
         password [4] = "234173";
 
-        int sementaraBuku = 5, sementaraAnggota = 5;
+        int sementaraBuku = 5, sementaraAnggota = 5, hasil = -1;
+;
         int judulSementara = 5, stockSementara = 5, kodeSementara = 5, anggotaSementara = 5, nimSementara = 5;
 
         String [] laporan = new String[100];
@@ -109,8 +110,29 @@ public class login {
                         
                                 for (int j = 0; j < sementaraBuku; j++){
                                     if (judulBuku[j].toLowerCase().contains(key)){
-                                        System.out.printf("| %-30s| %-13s| %-13s| %n", judulBuku[j], kodeBuku[j], stockBuku[j]);
                                         isKetemu = true;
+                                        System.out.printf("| %-30s| %-13s| %-13s| %n", judulBuku[j], kodeBuku[j], stockBuku[j]);
+                                        hasil = -1;
+                                        System.out.print("||    Masukan kode buku yang ingin di pinjam : ");
+                                        kode = input.nextInt();
+                                        for (int i = 0; i < kodeBuku.length; i++) {
+                                            if (kodeBuku[i] == kode){
+                                                hasil = i;
+                                                System.out.print("||    Minjam berapa buku : ");
+                                                int meminjam = input.nextInt();
+                                                stockBuku[i] -= meminjam;
+                                                System.out.print("||    Masukan tanggal peminjaman (dd-MM-yyyy) : ");
+                                                tanggalPeminjaman = input.next();      
+                                                String peminjam = "||    " + loginUser + " nim " + loginPass + " meminjam buku " + judulBuku[i] + " sejumlah " + meminjam;
+                                                laporan[histori] = peminjam;
+                                                histori++;                  
+                                                System.out.printf("||    %s nim %s meminjam buku %s sejumlah %s \n", loginUser, loginPass , judulBuku[i], meminjam);
+                                                System.out.println("");
+                                            }
+                                        }
+                                        if (hasil == -1){
+                                            System.out.println("||    Salah memasukan kode!");                                            
+                                        }
                                     }
                                 }
                                 if (!isKetemu){
@@ -118,27 +140,6 @@ public class login {
                                 }
                                 System.out.println();
                                 
-                                int hasil = -1;
-                                System.out.print("||    Masukan kode buku yang ingin di pinjam : ");
-                                kode = input.nextInt();
-                                for (int i = 0; i < kodeBuku.length; i++) {
-                                    if (kodeBuku[i] == kode){
-                                        hasil = i;
-                                        System.out.print("||    Minjam berapa buku : ");
-                                        int meminjam = input.nextInt();
-                                        stockBuku[i] -= meminjam;
-                                        System.out.print("||    Masukan tanggal peminjaman (dd-MM-yyyy) : ");
-                                        tanggalPeminjaman = input.next();      
-                                        String peminjam = "||    " + loginUser + " nim " + loginPass + " meminjam buku " + judulBuku[i] + " sejumlah " + meminjam;
-                                        laporan[histori] = peminjam;
-                                        histori++;                  
-                                        System.out.printf("||    %s nim %s meminjam buku %s sejumlah %s \n", loginUser, loginPass , judulBuku[i], meminjam);
-                                        System.out.println("");
-                                    }
-                                }
-                                if (hasil == -1){
-                                    System.out.println("||    Salah memasukan kode!");
-                                }
                                 break;
                             
                             case 2:
@@ -249,7 +250,8 @@ public class login {
                                         for (int j = 0; j < sementaraBuku; j++) {
                                             System.out.printf("%-30s|%-15s|%-15s|%n", judulBuku[j], kodeBuku[j], stockBuku[j]);
                                         }
-                                        int key, hasil = -1;
+                                        int key;
+                                        // hasil = -1;
                                         System.out.print("||    Masukan kode buku : ");
                                         key = input.nextInt();
                                         for (int i = 0; i < kodeBuku.length; i++) {
