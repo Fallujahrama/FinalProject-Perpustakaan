@@ -39,7 +39,8 @@ public class ArrayPengembalian {
             for (int i = 0; i < kodeBuku.length; i++) {
                 if (kodeBuku[i] == kode) {
                     hasil = i;
-                    System.out.printf("Buku %s dengan stock %s  \n" , judulBukuStrings[i], stockBuku[i]);
+                    System.out.println("===============================================");
+                    System.out.printf("Buku %s dengan stock %s  \n"  , judulBukuStrings[i], stockBuku[i]);
                     System.out.println("===============================================");
                     System.out.println("Masukan lamameminjam "); 
                     lamaMeminjam = sc.nextInt();
