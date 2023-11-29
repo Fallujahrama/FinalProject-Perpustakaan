@@ -300,9 +300,10 @@ public class login {
 
                                 switch (layananAnggota) {
                                     case 1:
+                                    input.nextLine(); // membersihkan line
                                         System.out.println("===============================================================");
                                         System.out.print("||    Masukan nama : ");                                
-                                        String namaBaru = input.next();
+                                        String namaBaru = input.nextLine();
                                         anggota[anggotaSementara] = namaBaru;
                                         anggotaSementara++;
                                         System.out.print("||    Masukan NIM : ");                                
@@ -311,6 +312,7 @@ public class login {
                                         nimSementara++;
                                         System.out.printf("|| Anda menambahkan anggota bernama %s dengan NIM %s \n", namaBaru, nimBaru);
                                         System.out.println("");
+                                        sementaraAnggota++;
                                         break;
                                         
                                     case 2:
