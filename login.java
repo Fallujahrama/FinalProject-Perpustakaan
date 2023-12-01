@@ -4,15 +4,23 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class login {
+    static Scanner input = new Scanner(System.in);
+
+    static boolean isLogin = false;
+    static boolean isAdmin = false;
+    static String loginUser, loginPass;
+    static String [] anggota = new String[10];
+    static String [] password = new String[10];
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        // Scanner input = new Scanner(System.in);
         SimpleDateFormat tanggalFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         String [] judulBuku = new String[10];
-        String [] anggota = new String[10];
+        // String [] anggota = new String[10];
         int [] kodeBuku = new int [10];
         int [] stockBuku = new int [10];
-        String [] password = new String[10];
+        // String [] password = new String[10];
 
         judulBuku[0] = "Sistem Informasi Jaringan";
         judulBuku[1] = "Visual Code";
@@ -28,9 +36,9 @@ public class login {
 
         stockBuku[0] = 3;
         stockBuku[1] = 4;
-        stockBuku[2] = 3;
+        stockBuku[2] = 5;
         stockBuku[3] = 3;
-        stockBuku[4] = 3;
+        stockBuku[4] = 6;
         
         anggota[0] = "Admin";
         anggota[1] = "Deva";
@@ -45,17 +53,14 @@ public class login {
         password [4] = "234173";
 
         int sementaraBuku = 5, sementaraAnggota = 5, hasil = -1;
-;
         int judulSementara = 5, stockSementara = 5, kodeSementara = 5, anggotaSementara = 5, nimSementara = 5;
 
         String [] laporan = new String[100];
         int histori = 0;
         boolean isKetemu = false;
-        boolean isLogin = false;
-        boolean isAdmin = false;
 
         int pilihMahasiswa, layananPustakawan, layananBuku, layananAnggota, kode;
-        String loginUser, loginPass, tanggalPeminjaman, tanggalPengembalian;
+        String tanggalPeminjaman, tanggalPengembalian;
         Date tglPengembalian, tglPeminjaman;
         long selisihHari;
         double denda = 0;
@@ -63,24 +68,25 @@ public class login {
             do {                
                 System.out.println("===============================================================");
                 System.out.println("||      Silahkan Login                                       ||");
-                System.out.print("||      Username = ");
-                loginUser = input.nextLine();                
-                System.out.print("||      Password = ");
-                loginPass = input.nextLine();
+                sistemLogin();
+                // System.out.print("||      Username = ");
+                // loginUser = input.nextLine();                
+                // System.out.print("||      Password = ");
+                // loginPass = input.nextLine();
                 
-                for (int i = 0; i < anggota.length; i++) {
-                    if (loginUser.equalsIgnoreCase(anggota[i]) && loginPass.equals(password[i])){
-                        isLogin = true;
+                // for (int i = 0; i < anggota.length; i++) {
+                //     if (loginUser.equalsIgnoreCase(anggota[i]) && loginPass.equals(password[i])){
+                //         isLogin = true;
 
-                        if (i == 0) {
-                            isAdmin = true;
-                        }
-                        break;
-                    }
-                }
-                if (isLogin == false){
-                    System.out.println("Username atau Password yang dimasukan salah, login kembali!");                    
-                }
+                //         if (i == 0) {
+                //             isAdmin = true;
+                //         }
+                //         break;
+                //     }
+                // }
+                // if (isLogin == false){
+                //     System.out.println("Username atau Password yang dimasukan salah, login kembali!");                    
+                // }
             
                 if (isLogin && !isAdmin){
                     System.out.println("===============================================================");
@@ -200,7 +206,7 @@ public class login {
                             }
                     } while (pilihMahasiswa != 3);
                 }
-                else if (loginUser.equalsIgnoreCase(anggota[0]) && loginPass.equals(password[0])){
+                else if (isLogin && isAdmin){
                     do {
                         System.out.println("===============================================================");
                         System.out.println("||      Layanan untuk Pustakawan                             ||");
@@ -368,5 +374,26 @@ public class login {
                 }
             } while (isLogin == false);        
         input.close();
+    }
+
+    public static void sistemLogin() {
+        System.out.print("||      Username = ");
+        loginUser = input.nextLine();                
+        System.out.print("||      Password = ");
+        loginPass = input.nextLine();
+                
+            for (int i = 0; i < anggota.length; i++) {
+                if (loginUser.equalsIgnoreCase(anggota[i]) && loginPass.equals(password[i])){
+                    isLogin = true;
+
+                    if (i == 0) {
+                        isAdmin = true;
+                    }
+                    break;
+                }
+            }
+            if (isLogin == false){
+                System.out.println("Username atau Password yang dimasukan salah, login kembali!");                    
+            }
     }
 }
