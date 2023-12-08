@@ -8,19 +8,18 @@ public class login {
 
     static boolean isLogin = false;
     static boolean isAdmin = false;
-    static String loginUser, loginPass;
+    static boolean isKetemu = false;
+    static String loginUser, loginPass, keyword = "";
     static String [] anggota = new String[10];
-    static String [] password = new String[10];
+    static String [] password = new String[10];    
+    static int sementaraBuku = 5, hasil = -1;    
 
-    public static void main(String[] args) {
-        // Scanner input = new Scanner(System.in);
+    public static void main(String[] args) {        
         SimpleDateFormat tanggalFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-        String [] judulBuku = new String[10];
-        // String [] anggota = new String[10];
+        String [] judulBuku = new String[10];        
         int [] kodeBuku = new int [10];
-        int [] stockBuku = new int [10];
-        // String [] password = new String[10];
+        int [] stockBuku = new int [10];    
 
         judulBuku[0] = "Sistem Informasi Jaringan";
         judulBuku[1] = "Visual Code";
@@ -52,13 +51,12 @@ public class login {
         password [3] = "234172";
         password [4] = "234173";
 
-        int sementaraBuku = 5, sementaraAnggota = 5, hasil = -1;
+        int sementaraAnggota = 5;
         int judulSementara = 5, stockSementara = 5, kodeSementara = 5, anggotaSementara = 5, nimSementara = 5;
 
-        String [] laporan = new String[100];
+        String [] laporan = new String[50];
         int histori = 0;
-        boolean isKetemu = false;
-
+        
         int pilihMahasiswa, layananPustakawan, layananBuku, layananAnggota, kode;
         String tanggalPeminjaman, tanggalPengembalian;
         Date tglPengembalian, tglPeminjaman;
@@ -105,7 +103,7 @@ public class login {
                             input.nextLine();
                                 System.out.println("===============================================================");
                                 System.out.print("Ingin mencari buku apa? ");
-                                String key = input.nextLine().toLowerCase();
+                                keyword = input.nextLine().toLowerCase();
                         
                                 System.out.println("==================     Buku Yang Tersedia    ==================");
                                 System.out.println(" ");
@@ -113,40 +111,41 @@ public class login {
                                 System.out.printf("| %-30s| %-12s| %-12s| %n", "Judul Buku", "Kode Buku", "Stock Buku");
                                 System.out.println();
                                 System.out.println("---------------------------------------------------------------");
-                        
-                                for (int j = 0; j < sementaraBuku; j++){
-                                    if (judulBuku[j].toLowerCase().contains(key)){
-                                        isKetemu = true;
-                                        System.out.printf("| %-30s| %-13s| %-13s| %n", judulBuku[j], kodeBuku[j], stockBuku[j]);
-                                        hasil = -1;
-                                        System.out.print("||    Masukan kode buku yang ingin di pinjam : ");
-                                        kode = input.nextInt();
-                                        for (int i = 0; i < kodeBuku.length; i++) {
-                                            if (kodeBuku[i] == kode){
-                                                hasil = i;
-                                                System.out.print("||    Minjam berapa buku : ");
-                                                int meminjam = input.nextInt();
-                                                stockBuku[i] -= meminjam;
-                                                System.out.print("||    Masukan tanggal peminjaman (dd-MM-yyyy) : ");
-                                                tanggalPeminjaman = input.next();      
-                                                String peminjam = "||    " + loginUser + " nim " + loginPass + " meminjam buku " + judulBuku[i] + " sejumlah " + meminjam;
-                                                laporan[histori] = peminjam;
-                                                histori++;                  
-                                                System.out.printf("||    %s nim %s meminjam buku %s sejumlah %s \n", loginUser, loginPass , judulBuku[i], meminjam);
-                                                System.out.println("");
-                                            }
-                                        }
-                                        if (hasil == -1){
-                                            System.out.println("||    Salah memasukan kode!");                                            
-                                        }
+                                                                                    
+                                int jumlahBuku = printBuku(judulBuku, kodeBuku, stockBuku, keyword);
+                                if (jumlahBuku == 0) {
+                                    break;
+                                }
+
+                                hasil = -1;
+                                System.out.print("||    Masukan kode buku yang ingin di pinjam : ");
+                                kode = input.nextInt();
+                                    for (int i = 0; i < kodeBuku.length; i++) {
+                                        if (kodeBuku[i] == kode){
+                                            hasil = i;
+                                            System.out.print("||    Minjam berapa buku : ");
+                                            int meminjam = input.nextInt();
+                                            stockBuku[i] -= meminjam;
+                                            System.out.print("||    Masukan tanggal peminjaman (dd-MM-yyyy) : ");
+                                            tanggalPeminjaman = input.next();      
+                                            String peminjam = "||    " + loginUser + " nim " + loginPass + " meminjam buku " + judulBuku[i] + " sejumlah " + meminjam;
+                                            laporan[histori] = peminjam;
+                                            histori++;                  
+                                            System.out.printf("||    %s nim %s meminjam buku %s sejumlah %s \n", loginUser, loginPass , judulBuku[i], meminjam);
+                                            System.out.println("");
+                                            break;
+                                        }                            
                                     }
-                                }
-                                if (!isKetemu){
-                                    System.out.println("Buku tidak ditemukan!");
-                                }
-                                System.out.println();
-                                
-                                break;
+                                    
+                                    if (hasil == -1){
+                                        System.out.println("||    Salah memasukan kode!");   
+                                        System.out.println("");                                                                                 
+                                    }
+                                    break;                        
+                                // if (!isKetemu){
+                                //     System.out.println("Buku tidak ditemukan!");
+                                // }
+                                // System.out.println();                                                        
                             
                             case 2:
                             input.nextLine();
@@ -253,9 +252,10 @@ public class login {
 
                                     case 2:
                                         System.out.println("===============================================================");
-                                        for (int j = 0; j < sementaraBuku; j++) {
-                                            System.out.printf("%-30s|%-15s|%-15s|%n", judulBuku[j], kodeBuku[j], stockBuku[j]);
-                                        }
+                                        // for (int j = 0; j < sementaraBuku; j++) {
+                                        //     System.out.printf("%-30s|%-15s|%-15s|%n", judulBuku[j], kodeBuku[j], stockBuku[j]);
+                                        // }
+                                        printBuku(judulBuku, kodeBuku, stockBuku, keyword);
                                         int key;
                                         // hasil = -1;
                                         System.out.print("||    Masukan kode buku : ");
@@ -279,10 +279,11 @@ public class login {
                                         System.out.println("-------------------------- List Buku --------------------------");
                                         System.out.printf("%-30s|%-15s|%-15s|%n", "Judul Buku", "Kode Buku", "Stock Buku");
                                         System.out.println("---------------------------------------------------------------");
-                                        for (int j = 0; j < sementaraBuku; j++) {
-                                            System.out.printf("%-30s|%-15s|%-15s|%n", judulBuku[j], kodeBuku[j], stockBuku[j]);
-                                        }
-                                        System.out.println();
+                                        // for (int j = 0; j < sementaraBuku; j++) {
+                                        //     System.out.printf("%-30s|%-15s|%-15s|%n", judulBuku[j], kodeBuku[j], stockBuku[j]);
+                                        // }
+                                        // System.out.println();
+                                        printBuku(judulBuku, kodeBuku, stockBuku, "");
                                         break;
                                     
                                     case 4:
@@ -373,10 +374,9 @@ public class login {
                     } while (layananPustakawan != 4);
                 }
             } while (isLogin == false);        
-        input.close();
-    }
-
-    public static void sistemLogin() {
+        }
+        
+        public static void sistemLogin() {
         System.out.print("||      Username = ");
         loginUser = input.nextLine();                
         System.out.print("||      Password = ");
@@ -393,7 +393,32 @@ public class login {
                 }
             }
             if (isLogin == false){
-                System.out.println("Username atau Password yang dimasukan salah, login kembali!");                    
+                System.out.println("Username atau Password yang dimasukan salah, login kembali!");
             }
     }
-}
+
+        public static int printBuku (String [] judulBuku, int [] kodeBuku, int [] stockBuku, String keyword) {
+
+            int jumlahBuku = 0;
+
+            for (int j = 0; j < sementaraBuku; j++) {
+                if (keyword.isEmpty() || judulBuku[j].toLowerCase().contains(keyword)){
+                    // isKetemu = true;
+                    System.out.printf("%-30s|%-15s|%-15s|%n", judulBuku[j], kodeBuku[j], stockBuku[j]);
+                    jumlahBuku++;
+                }
+                // else if (keyword.equals(null)) {
+                // System.out.printf("%-30s|%-15s|%-15s|%n", judulBuku[j], kodeBuku[j], stockBuku[j]);
+                // }
+                // System.out.println();
+            }
+
+            if (jumlahBuku == 0){
+                System.out.println("Buku tidak ditemukan!");            
+            }
+
+            System.out.println();
+            return jumlahBuku;
+            // return printBuku(judulBuku, kodeBuku, stockBuku, key);
+    }
+} 
