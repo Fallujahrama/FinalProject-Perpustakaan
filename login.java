@@ -163,9 +163,12 @@ public class login {
                                             }
 
                                         } catch (ParseException e){
-                                            System.out.println("Format tanggal tidak sesuai. Gunakan format dd-MM-yyyy");
+                                            System.out.println("||    Format tanggal tidak sesuai. Gunakan format dd-MM-yyyy !");
                                         }
                                     }
+                                } 
+                                if (hasil == -1){
+                                    System.out.println("||    Buku tidak ditemukan!");                            
                                 }
                                 break;
                                                                                                                     
@@ -248,7 +251,7 @@ public class login {
                                         }
 
                                         if (hasil == -1){
-                                            System.out.println("|| Buku tidak ditemukan!");
+                                            System.out.println("||    Kode tidak sesuai!");
                                         }
 
                                         System.out.println("");
@@ -259,7 +262,7 @@ public class login {
                                         System.out.println("-------------------------- List Buku --------------------------");
                                         System.out.printf("%-30s|%-15s|%-15s|%n", "Judul Buku", "Kode Buku", "Stock Buku");
                                         System.out.println("---------------------------------------------------------------");
-
+                                        
                                         printBuku(judulBuku, kodeBuku, stockBuku, "");
                                         break;
                                     
@@ -270,8 +273,7 @@ public class login {
                                         System.out.println("|| Anda salah memilih layanan!");
                                         System.out.println("");
                                         break;
-                                }
-                                
+                                }                                
                             } while (layananBuku != 4);
                                 break;
                                 
@@ -307,7 +309,6 @@ public class login {
                                         System.out.println("-------------------- Username dan Password --------------------");
                                         System.out.printf("%-30s| %-30s|%n", "Username", "Password");
                                         System.out.println("---------------------------------------------------------------");
-
                                         for (int i = 1; i < sementaraAnggota; i++) { //dari 1 karena admin tidak termasuk anggota
                                             System.out.printf("%-30s| %-30s|%n", anggota[i], password[i]);
                                         }
@@ -322,8 +323,7 @@ public class login {
                                         System.out.println("|| Anda salah memilih layanan!");
                                         System.out.println("");                                    
                                         break;
-                                }
-
+                                }                                
                                 } while (layananAnggota != 3);
                                 break;
 
@@ -375,7 +375,7 @@ public class login {
             }
 
             if (isLogin == false){
-                System.out.println("Username atau Password yang dimasukan salah, login kembali!");
+                System.out.println("||    Username atau Password yang dimasukan salah, login kembali!");
             }
     }
 
@@ -391,7 +391,7 @@ public class login {
             }
 
             if (jumlahBuku == 0){
-                System.out.println("Buku tidak ditemukan!");            
+                System.out.println("||    Buku tidak ditemukan!");            
             }
 
             System.out.println();
