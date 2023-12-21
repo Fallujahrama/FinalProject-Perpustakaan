@@ -1,7 +1,7 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Scanner;
+import java.text.ParseException;            
+import java.text.SimpleDateFormat;          
+import java.util.Date;                      
+import java.util.Scanner;                   
 
 public class login {
     static Scanner input = new Scanner(System.in);
@@ -15,7 +15,7 @@ public class login {
     static int sementaraBuku = 5, hasil = -1;    
 
     public static void main(String[] args) {        
-        SimpleDateFormat tanggalFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat tanggalFormat = new SimpleDateFormat("dd-MM-yyyy");        
 
         String [] judulBuku = new String[10];        
         int [] kodeBuku = new int [10];
@@ -51,8 +51,8 @@ public class login {
         password [3] = "234172";
         password [4] = "234173";
 
-        int sementaraAnggota = 5;
-        int judulSementara = 5, stockSementara = 5, kodeSementara = 5, anggotaSementara = 5, nimSementara = 5;
+        int sementaraAnggota = 5;                                                                                   
+        int judulSementara = 5, stockSementara = 5, kodeSementara = 5, anggotaSementara = 5, nimSementara = 5;      
 
         String [] laporan = new String[50];
         int histori = 0;
@@ -85,7 +85,7 @@ public class login {
                             input.nextLine();
                                 System.out.println("===============================================================");
                                 System.out.print("Ingin mencari buku apa? ");
-                                keyword = input.nextLine().toLowerCase();
+                                keyword = input.nextLine().toLowerCase();                                                   
                         
                                 System.out.println("==================     Buku Yang Tersedia    ==================");
                                 System.out.println(" ");
@@ -99,13 +99,13 @@ public class login {
                                     break;
                                 }
 
-                                hasil = -1;
-                                System.out.print("||    Masukan kode buku yang ingin di pinjam : ");
+                                hasil = -1;                                                                                 
+                                System.out.print("||    Masukan kode buku yang ingin dipinjam : ");
                                 kode = input.nextInt();
                                     for (int i = 0; i < kodeBuku.length; i++) {
                                         if (kodeBuku[i] == kode){
                                             hasil = i;
-                                            System.out.print("||    Minjam berapa buku : ");
+                                            System.out.print("||    Masukkan jumlah buku yang dipinjam : ");
                                             int meminjam = input.nextInt();
                                             stockBuku[i] -= meminjam;
                                             System.out.print("||    Masukan tanggal peminjaman (dd-MM-yyyy) : ");
@@ -129,15 +129,15 @@ public class login {
                             input.nextLine();
                                 hasil = -1;
                                 System.out.println("===============================================================");
-                                System.out.print("||    Masukan kode buku yang di pinjam : ");
+                                System.out.print("||    Masukan kode buku yang dikembalikan : ");
                                 kode = input.nextInt();
                                 for (int i = 0; i < kodeBuku.length; i++) {
                                     if (kodeBuku[i] == kode){
-                                        hasil = i;
+                                        // hasil = i;
                                         try {
                                             System.out.print("||    Masukan tanggal peminjaman (dd-MM-yyyy) : ");
                                             tanggalPeminjaman = input.next();
-                                            tglPeminjaman = tanggalFormat.parse(tanggalPeminjaman);
+                                            tglPeminjaman = tanggalFormat.parse(tanggalPeminjaman);                         
                                             System.out.print("||    Masukan tanggal pengembalian (dd-MM-yyyy) : ");
                                             tanggalPengembalian = input.next();
                                             tglPengembalian = tanggalFormat.parse(tanggalPengembalian);
@@ -188,8 +188,8 @@ public class login {
                     do {
                         System.out.println("===============================================================");
                         System.out.println("||      Layanan untuk Pustakawan                             ||");
-                        System.out.println("||      1. Mengolah data buku                                ||");
-                        System.out.println("||      2. Mengolah data anggota                             ||");
+                        System.out.println("||      1. Mengolah Data Buku                                ||");
+                        System.out.println("||      2. Mengolah Data Anggota                             ||");
                         System.out.println("||      3. Histori Laporan                                   ||");
                         System.out.println("||      4. Log Out                                           ||");
                         System.out.println("||      5. Exit                                              ||");
@@ -201,10 +201,10 @@ public class login {
                                 do {
                                 System.out.println("===============================================================");
                                 System.out.println("||      Mengolah Data Buku                                   ||");
-                                System.out.println("||      1. Menambah data buku                                ||");
-                                System.out.println("||      2. Memperbarui stock buku                            ||");
-                                System.out.println("||      3. List Buku                                         ||");
-                                System.out.println("||      4. Keluar                                            ||");
+                                System.out.println("||      1. List Buku                                         ||");
+                                System.out.println("||      2. Menambah Data Buku                                ||");
+                                System.out.println("||      3. Memperbarui Stock Buku                            ||");
+                                System.out.println("||      4. Kembali ke Menu Utama                             ||");
                                 System.out.print("||      Silahkan pilih layanan diatas : ");
                                 layananBuku = input.nextInt();
                                 
@@ -257,7 +257,7 @@ public class login {
                                     case 3:
                                         System.out.println("===============================================================");
                                         System.out.println("-------------------------- List Buku --------------------------");
-                                        System.out.printf("%-30s|%-15s|%-15s|%n", "Judul Buku", "Kode Buku", "Stock Buku");
+                                        System.out.printf("%-30s|%-15s|%-15s|%n", "Judul", "Kode", "Stock");
                                         System.out.println("---------------------------------------------------------------");
 
                                         printBuku(judulBuku, kodeBuku, stockBuku, "");
@@ -279,9 +279,9 @@ public class login {
                                 do {
                                 System.out.println("===============================================================");
                                 System.out.println("||      Mengolah Data Anggota                                ||");
-                                System.out.println("||      1. Menambah data Anggota                             ||");
-                                System.out.println("||      2. Melihat data Anggota                              ||");
-                                System.out.println("||      3. Keluar                                            ||");
+                                System.out.println("||      1. List Anggota                                      ||");
+                                System.out.println("||      2. Menambah Data Anggota                             ||");
+                                System.out.println("||      3. Kembali ke Menu Utama                             ||");
                                 System.out.print("||      Silahkan pilih layanan diatas : ");
                                 layananAnggota = input.nextInt();
 
@@ -304,11 +304,11 @@ public class login {
                                         
                                     case 2:
                                         System.out.println("===============================================================");
-                                        System.out.println("-------------------- Username dan Password --------------------");
-                                        System.out.printf("%-30s| %-30s|%n", "Username", "Password");
+                                        System.out.println("---------------------------------------------------------------");
+                                        System.out.printf("%-30s| %-30s|%n", "Nama", "NIM");
                                         System.out.println("---------------------------------------------------------------");
 
-                                        for (int i = 1; i < sementaraAnggota; i++) { //dari 1 karena admin tidak termasuk anggota
+                                        for (int i = 1; i < sementaraAnggota; i++) { 
                                             System.out.printf("%-30s| %-30s|%n", anggota[i], password[i]);
                                         }
                                         
@@ -379,11 +379,11 @@ public class login {
             }
     }
 
-        public static int printBuku (String [] judulBuku, int [] kodeBuku, int [] stockBuku, String keyword) {
+        public static int printBuku (String[] judulBuku, int[] kodeBuku, int[] stockBuku, String keyword) {
 
             int jumlahBuku = 0;
 
-            for (int j = 0; j < sementaraBuku; j++) {
+            for (int j = 0; j < sementaraBuku; j++) { 
                 if (keyword.isEmpty() || judulBuku[j].toLowerCase().contains(keyword)){                    
                     System.out.printf("%-30s|%-15s|%-15s|%n", judulBuku[j], kodeBuku[j], stockBuku[j]);
                     jumlahBuku++;
