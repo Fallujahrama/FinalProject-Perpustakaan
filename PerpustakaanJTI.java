@@ -3,7 +3,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class login {
+public class PerpustakaanJTI {
     static Scanner input = new Scanner(System.in);
 
     static boolean isLogin = false;
@@ -133,7 +133,7 @@ public class login {
                             }
                             else {                            
                                 input.nextLine();
-                                hasil = -1;
+                                hasil = -1;                                
                                 System.out.println("===============================================================");
                                 System.out.print("||      Masukan kode buku yang dikembalikan : ");
                                 kode = input.nextInt();
@@ -198,8 +198,8 @@ public class login {
                     do {
                         System.out.println("===============================================================");
                         System.out.println("||      Layanan untuk Pustakawan                             ||");
-                        System.out.println("||      1. Mengolah data buku                                ||");
-                        System.out.println("||      2. Mengolah data anggota                             ||");
+                        System.out.println("||      1. Mengolah Data Buku                                ||");
+                        System.out.println("||      2. Mengolah Data Anggota                             ||");
                         System.out.println("||      3. Histori Laporan                                   ||");
                         System.out.println("||      4. Log Out                                           ||");
                         System.out.println("||      5. Exit                                              ||");
@@ -212,9 +212,9 @@ public class login {
                                 System.out.println("===============================================================");
                                 System.out.println("||      Mengolah Data Buku                                   ||");
                                 System.out.println("||      1. Daftar Buku                                       ||");
-                                System.out.println("||      2. Menambah data buku                                ||");
-                                System.out.println("||      3. Memperbarui stock buku                            ||");
-                                System.out.println("||      4. Keluar                                            ||");
+                                System.out.println("||      2. Menambah Data Buku                                ||");
+                                System.out.println("||      3. Memperbarui Stock Buku                            ||");
+                                System.out.println("||      4. Kembali ke Menu Utama                             ||");
                                 System.out.print("||      Silahkan pilih layanan diatas : ");
                                 layananBuku = input.nextInt();
                                 
@@ -288,14 +288,25 @@ public class login {
                                 do {
                                 System.out.println("===============================================================");
                                 System.out.println("||      Mengolah Data Anggota                                ||");
-                                System.out.println("||      1. Menambah data Anggota                             ||");
-                                System.out.println("||      2. Melihat data Anggota                              ||");
-                                System.out.println("||      3. Keluar                                            ||");
+                                System.out.println("||      1. List Anggota                                      ||");
+                                System.out.println("||      2. Menambah Data Anggota                             ||");
+                                System.out.println("||      3. Kembali ke Menu Utama                             ||");
                                 System.out.print("||      Silahkan pilih layanan diatas : ");
                                 layananAnggota = input.nextInt();
 
                                 switch (layananAnggota) {
                                     case 1:
+                                    System.out.println("===============================================================");                                        
+                                    System.out.printf("|%-30s| %-30s|%n", "Nama", "NIM");
+                                    System.out.println("---------------------------------------------------------------");
+                                    for (int i = 1; i < sementaraAnggota; i++) { //dari 1 karena admin tidak termasuk anggota
+                                        System.out.printf("%-30s| %-30s|%n", anggota[i], password[i]);
+                                    }
+                                    
+                                    System.out.println();
+                                    break;
+                                    
+                                    case 2:
                                     input.nextLine(); // membersihkan line
                                         System.out.println("===============================================================");
                                         System.out.print("||      Masukan nama : ");                                
@@ -310,18 +321,6 @@ public class login {
                                         System.out.println("");
                                         sementaraAnggota++;
                                         break;
-                                        
-                                    case 2:
-                                        System.out.println("===============================================================");
-                                        System.out.println("-------------------- Username dan Password --------------------");
-                                        System.out.printf("|%-30s| %-30s|%n", "Username", "Password");
-                                        System.out.println("---------------------------------------------------------------");
-                                        for (int i = 1; i < sementaraAnggota; i++) { //dari 1 karena admin tidak termasuk anggota
-                                            System.out.printf("%-30s| %-30s|%n", anggota[i], password[i]);
-                                        }
-                                        
-                                        System.out.println();
-                                        break;
 
                                     case 3:
                                         break;                                
@@ -332,6 +331,16 @@ public class login {
                                         break;
                                 }                                
                                 } while (layananAnggota != 3);
+                                break;
+
+                            case 3:
+                                System.out.println("===============================================================");
+                                System.out.print("||    Histori Laporan : \n");
+                                for (int i = 0; i < histori; i++){
+                                    System.out.println(laporan[i]); 
+                                }
+
+                                System.out.println(""); 
                                 break;
 
                             case 4:

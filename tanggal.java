@@ -2,6 +2,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.Calendar;
 
 public class tanggal {
     public static void main(String[] args) {
@@ -17,6 +18,10 @@ public class tanggal {
             System.out.print("Masukan Tanggal Peminjaman (dd-MM-yyyy) : ");
             tanggalPeminjaman = sc.next();
             peminjaman = tanggalFormat.parse(tanggalPeminjaman);
+
+            // if (peminjaman.getMonth() >= 12) {
+            //     throw new ParseException
+            // }
 
             System.out.print("Masukan Tanggal Pengembalian (dd-MM-yyyy) : ");
             tanggalPengembalian = sc.next();
