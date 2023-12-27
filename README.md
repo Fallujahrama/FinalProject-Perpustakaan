@@ -7,6 +7,8 @@ Anggota     : Deva Selviana - 08
 
 Sistem Perpustakaan yang kami buat berdasarkan referensi Perpustakaan Polinema
 
+# File Final bernama PerpustakaanJTI.java #
+
 Dimulai dari login sebagai admin/mahasiswa,
 - pada fitur admin bisa mengolah data buku dan anggota yang terdaftar, serta bisa melihat histori laporan jika ada transaksi
 
